@@ -1,0 +1,44 @@
+#!/bin/bash
+
+set -e
+
+clog -t "mariadb: Build process starts ..."
+
+# add image schema
+lcs-cli schema add --section mariadb
+
+# delete default mysql pre-install database files
+rm -fr /var/lib/mysql/*
+rm -fr /var/log/mysql/*
+
+# create data store
+mkdir -p ${DB_DIR}
+chown -R mysql:mysql ${DB_DIR}
+clog -i "mariadb: Directory ${DB_DIR} for databases created."
+
+# my.cnf
+cp -f /scripts/setup/mariadb/my.cnf /etc/my.cnf
+cp -f /scripts/setup/mariadb/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
+clog -i "mariadb: Configuration completed."
+
+# supervisor
+cat > /etc/supervisor.conf.d/mariadb.conf <<EOF
+[program:mariadb]
+directory=/
+command=/usr/bin/mysqld_safe
+user=mysql
+autostart=true
+autorestart=true
+stopasgroup=true
+stdout_logfile=${LOG_DIR}/supervisor/%(program_name)s.log
+stderr_logfile=${LOG_DIR}/supervisor/%(program_name)s.log
+EOF
+clog -i "mariadb: Supervisor config created."
+
+# Create profile for global env in different shells
+cat > /etc/profile.d/mariadb.sh <<EOF
+export MARIADB_LOG_DIR=${MARIADB_LOG_DIR}
+EOF
+clog -i "mariadb: Global ENVs added to /etc/profile.d"
+
+clog -t "mariadb: Build process completed."

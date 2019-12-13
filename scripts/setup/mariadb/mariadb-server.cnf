@@ -1,0 +1,74 @@
+#
+# These groups are read by MariaDB server.
+# Use it for options that only the server (but not clients) should see
+
+# this is read by the standalone daemon and embedded servers
+[server]
+
+# this is only for the mysqld standalone daemon
+[mysqld]
+#skip-networking
+skip-external-locking
+key_buffer_size = {{MARIADB_KEY_BUFFER_SIZE}}
+max_allowed_packet = {{MARIADB_MAX_ALLOWED_PACKET}}
+table_open_cache = {{MARIADB_TABLE_OPEN_CACHE}}
+sort_buffer_size = {{MARIADB_SORT_BUFFER_SIZE}}
+net_buffer_length = {{MARIADB_NET_BUFFER_LENGTH}}
+read_buffer_size = {{MARIADB_READ_BUFFER_SIZE}}
+read_rnd_buffer_size = {{MARIADB_READ_RND_BUFFER_SIZE}}
+datadir     = /data/db
+log-error   = /data/log/mariadb/mariadb.log
+collation-server = utf8_unicode_ci
+character-set-server = utf8
+init-connect='SET NAMES utf8'
+
+# InnoDB
+# innodb_data_home_dir = /data/db
+innodb_log_group_home_dir = /data/log/mariadb
+# You can set .._buffer_pool_size up to 50 - 80 %
+# of RAM but beware of setting memory usage too high
+innodb_buffer_pool_size = {{MARIADB_INNODB_BUFFER_POOL_SIZE}}
+# Set .._log_file_size to 25 % of buffer pool size
+innodb_log_file_size = {{MARIADB_INNODB_LOG_FILE_SIZE}}
+innodb_log_buffer_size = {{MARIADB_INNODB_LOG_BUFFER_SIZE}}
+innodb_flush_log_at_trx_commit = 1
+innodb_lock_wait_timeout = {{MARIADB_INNODB_LOCK_WAIT_TIMEOUT}}
+
+[mysqldump]
+quick
+max_allowed_packet = 16M
+
+[mysql]
+no-auto-rehash
+
+# Galera-related settings
+[galera]
+# Mandatory settings
+#wsrep_on=ON
+#wsrep_provider=
+#wsrep_cluster_address=
+#binlog_format=row
+#default_storage_engine=InnoDB
+#innodb_autoinc_lock_mode=2
+#
+# Allow server to accept connections on all interfaces.
+#
+#bind-address=0.0.0.0
+#
+# Optional setting
+#wsrep_slave_threads=1
+#innodb_flush_log_at_trx_commit=0
+
+# this is only for embedded server
+[embedded]
+
+# This group is only read by MariaDB servers, not by MySQL.
+# If you use the same .cnf file for MySQL and MariaDB,
+# you can put MariaDB-only options here
+[mariadb]
+
+# This group is only read by MariaDB-10.3 servers.
+# If you use the same .cnf file for MariaDB of different versions,
+# use this group for options that older servers don't understand
+[mariadb-10.3]
+

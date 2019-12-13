@@ -1,0 +1,33 @@
+version: "3.7"
+# Set -arch=_aarch64 for arm build
+services:
+  mariadb:
+    build:
+      context: .
+      args:
+#        - arch=_aarch64
+        - version=10.3.20
+        - build=dev
+    image: leadstec/mariadb:10.3.20
+    ports:
+      - "50201:3306"
+    volumes:
+      - ~/volumes-data/mariadb.local/log:/data/log
+      - ~/volumes-data/mariadb.local/db:/data/db
+      - ~/volumes-data/mariadb.local/persist:/data/persist
+    env_file:
+      - ./env
+    environment:
+      - EMAIL=
+      - LCS_LOG_LEVEL=debug
+    secrets:
+      - lcs
+      - deploy
+    hostname: mariadb.local
+    container_name: mariadb.local
+
+secrets:
+  lcs:
+    file: ~/.vcubi/lcs
+  mariadb:
+    file: ./deploy
