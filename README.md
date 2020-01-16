@@ -1,5 +1,8 @@
 ### CHANGELOG
 
+**2020/01/16**
+* Update - MariaDB 10.4.10
+
 **2019/12/13**
 * Update to 10.3.20
 * There is a file system issue while running in Mac, volume problem seems not going to be solved.
