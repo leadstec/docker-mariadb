@@ -1,14 +1,16 @@
 #
-# AUTHOR            Frank,H.L.Lai <frank@leadstec.com>
-# DOCKER-VERSION    19.03
-# Copyright         (C) 2020 LEADSTEC Solutions. All rights reserved.
+# Author            Frank,H.L.Lai <frank@leadstec.com>
+# Docker Version    19.03
+# Website           https://www.leadstec.com
+# Copyright         (C) 2020 LEADSTEC Systems. All rights reserved.
 #
-FROM leadstec/alpine:3.10.3
-ARG version=10.3.x
+ARG arch=
+FROM leadstec.tencentcloudcr.com/leadstec/alpine${arch}:3.12.0
+ARG version=10.4.13
 ARG build=dev
 
 LABEL version="${version}-${build}" \
-    description="MariaDB image for VCubi" \
+    description="MariaDB image for VCubi platform" \
     maintainer="Frank,H.L.Lai <frank@leadstec.com>"
 
 # set environment variables

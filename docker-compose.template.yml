@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services:
 
@@ -6,9 +6,10 @@ services:
     build:
       context: .
       args:
-        - version=10.4.10
+        - arch=
+        - version=10.4.13
         - build=dev
-    image: leadstec/mariadb:10.4.10
+    image: leadstec.tencentcloudcr.com/leadstec/mariadb:10.4.13
     ports:
       - "50201:3306"
     volumes:
