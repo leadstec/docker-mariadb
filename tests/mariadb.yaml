@@ -1,0 +1,55 @@
+schemaVersion: '2.0.0'
+
+commandTests:
+  - name: "MariaDB"
+    command: "which"
+    args: ["nginx"]
+    expectedOutput: ["/usr/sbin/nginx"]
+
+fileExistenceTests:
+  - name: 'MariaDB main config'
+    path: '/etc/my.cnf'
+    shouldExist: true
+    permissions: '-rw-r--r--'
+    uid: 0
+    gid: 0
+  - name: 'MariaDB server config'
+    path: '/etc/my.cnf.d/mariadb-server.cnf'
+    shouldExist: true
+    permissions: '-rw-r--r--'
+    uid: 0
+    gid: 0
+  - name: 'Schema file'
+    path: '/etc/lcs/mariadb.json'
+    shouldExist: true
+    permissions: '-rw-r--r--'
+    uid: 0
+    gid: 0
+
+fileContentTests:
+  - name: 'Schema'
+    path: '/etc/lcs/schema.json'
+    expectedContents:
+      - 'MARIADB_REMOTE_ADMIN_USER'
+      - 'MARIADB_DB_USER'
+      - 'MARIADB_DB_NAME'
+      - 'MARIADB_DB_CHARSET'
+      - 'MARIADB_DB_CHARSET_COLLATE'
+      - 'MARIADB_KEY_BUFFER_SIZE'
+      - 'MARIADB_MAX_ALLOWED_PACKET'
+      - 'MARIADB_TABLE_OPEN_CACHE'
+      - 'MARIADB_SORT_BUFFER_SIZE'
+      - 'MARIADB_NET_BUFFER_LENGTH'
+      - 'MARIADB_READ_BUFFER_SIZE'
+      - 'MARIADB_READ_RND_BUFFER_SIZE'
+      - 'MARIADB_INNODB_BUFFER_POOL_SIZE'
+      - 'MARIADB_INNODB_LOG_FILE_SIZE'
+      - 'MARIADB_INNODB_LOG_BUFFER_SIZE'
+      - 'MARIADB_INNODB_LOCK_WAIT_TIMEOUT'
+
+metadataTest:
+  env:
+    - key: 'MARIADB_LOG_DIR'
+      value: '/data/log/mariadb'
+  entrypoint: ["lcsd"]
+  cmd: ["run", "start"]
