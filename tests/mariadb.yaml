@@ -3,8 +3,12 @@ schemaVersion: '2.0.0'
 commandTests:
   - name: "MariaDB"
     command: "which"
-    args: ["nginx"]
-    expectedOutput: ["/usr/sbin/nginx"]
+    args: ["mysqld"]
+    expectedOutput: ["/usr/bin/mysqld"]
+  - name: "MariaDB Safe mode"
+    command: "which"
+    args: ["mysqld_safe"]
+    expectedOutput: ["/usr/bin/mysqld_safe"]
 
 fileExistenceTests:
   - name: 'MariaDB main config'

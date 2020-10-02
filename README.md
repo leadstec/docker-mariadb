@@ -21,24 +21,24 @@ The project contains MariaDB image for VCubi platform, based on LCS container ma
 
 ### LCS Schema & ENV
 
-| ENV Variable              | Description               | Default | Accept Values | Required |
-|---------------------------|---------------------------|---------|---------------|----------|
-| MARIADB_REMOTE_ADMIN_USER |                           |  admin  |     |          |
-| MARIADB_DB_USER           |                           |  dbuser |               |          |
-| MARIADB_DB_NAME           |                           |   mydb  |               |          |
-| MARIADB_DB_CHARSET        |                           |   utf8  |               |          |
-| MARIADB_DB_CHARSET_COLLATE|                           | utf8_general_ci |       |          |
-| MARIADB_KEY_BUFFER_SIZE   |                           |   16M   |               |          |
-| MARIADB_MAX_ALLOWED_PACKET|                           |   16M   |     |          |
-| MARIADB_TABLE_OPEN_CACHE  |                           |   64    |     |          |
-| MARIADB_SORT_BUFFER_SIZE  |                           |   512K  |     |          |
-| MARIADB_NET_BUFFER_LENGTH |                           |    8K   |     |          |
-| MARIADB_READ_BUFFER_SIZE  |                           |   256K  |     |          |
-| MARIADB_READ_RND_BUFFER_SIZE  |                       |   512K  |     |          |
-| MARIADB_INNODB_BUFFER_POOL_SIZE   |                   |   64M   |     |          |
-| MARIADB_INNODB_LOG_FILE_SIZE  |                       |   5M    |     |          |
-| MARIADB_INNODB_LOG_BUFFER_SIZE|                       |   8M    | | |
-| MARIADB_INNODB_LOCK_WAIT_TIMEOUT  |                   |   50    |      |          |
+| ENV Variable              | Description               | Default | Accept Values |
+|---------------------------|---------------------------|---------|---------------|
+| MARIADB_REMOTE_ADMIN_USER |                           |  admin  |     |
+| MARIADB_DB_USER           |                           |  dbuser |               |
+| MARIADB_DB_NAME           |                           |   mydb  |               |
+| MARIADB_DB_CHARSET        |                           |   utf8  |               |
+| MARIADB_DB_CHARSET_COLLATE|                           | utf8_general_ci |       |
+| MARIADB_KEY_BUFFER_SIZE   |                           |   16M   |               |
+| MARIADB_MAX_ALLOWED_PACKET|                           |   16M   |     |
+| MARIADB_TABLE_OPEN_CACHE  |                           |   64    |     |
+| MARIADB_SORT_BUFFER_SIZE  |                           |   512K  |     |
+| MARIADB_NET_BUFFER_LENGTH |                           |    8K   |     |
+| MARIADB_READ_BUFFER_SIZE  |                           |   256K  |     |
+| MARIADB_READ_RND_BUFFER_SIZE  |                       |   512K  |     |
+| MARIADB_INNODB_BUFFER_POOL_SIZE   |                   |   64M   |     |
+| MARIADB_INNODB_LOG_FILE_SIZE  |                       |   5M    |     |
+| MARIADB_INNODB_LOG_BUFFER_SIZE|                       |   8M    |     |
+| MARIADB_INNODB_LOCK_WAIT_TIMEOUT  |                   |   50    |     |
 
 ## Image Structure Test
     container-structure-test test --image leadstec/mariadb:tag --config tests/mariadb.yaml
@@ -47,6 +47,7 @@ The project contains MariaDB image for VCubi platform, based on LCS container ma
 
 **2020/10/02**
 * Update: MariaDB 10.4.13
+* New: Add container-structure-test schema
 
 **2020/01/16**
 * Update - MariaDB 10.4.10
