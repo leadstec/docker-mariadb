@@ -184,13 +184,13 @@
         {
           "name": "MARIADB_REMOTE_ADMIN_PASS",
           "section": "mariadb",
-          "pattern": "{{MARIADB_REMOTE_ADMIN_PASS_SECRET}}",
+          "pattern": "{{MARIADB_REMOTE_ADMIN_PASS}}",
           "path": "/scripts/mariadb.post-secret.sh"
         },
         {
           "name": "MARIADB_DB_PASS",
           "section": "mariadb",
-          "pattern": "{{MARIADB_DB_PASS_SECRET}}",
+          "pattern": "{{MARIADB_DB_PASS}}",
           "path": "/scripts/mariadb.post-secret.sh"
         }
       ]
