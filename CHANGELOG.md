@@ -1,5 +1,10 @@
 # CHANGELOG
 
+**2021/01/11**
+* Update: MariaDB 10.4.15
+* Update: Move to Github Action for CI
+* Update: Move to Docker Hub as default registry
+
 **2020/10/02**
 * Update: MariaDB 10.4.13
 * New: Add container-structure-test schema

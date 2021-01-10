@@ -1,6 +1,6 @@
 # MariaDB image for VCubi Platform
 
-![Version](https://img.shields.io/badge/MariaDB-10.4.13-blue)
+![Version](https://img.shields.io/badge/MariaDB-10.4.15-blue)
 ![Arch](https://img.shields.io/badge/Arch-amd64,_arm64-brightgreen)
 ![Workflow](https://github.com/leadstec/docker-mariadb/workflows/ci/badge.svg)
 

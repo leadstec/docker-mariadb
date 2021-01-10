@@ -3,6 +3,13 @@ name: ci
 on:
   push:
     branches: [ master ]
+    paths-ignore:
+      - 'updates/**'
+      - 'tests/**'
+      - 'docker-compose.template.yml'
+      - 'env'
+      - 'README.md'
+      - 'CHANGELOG.md'
 
 jobs:
   build:
