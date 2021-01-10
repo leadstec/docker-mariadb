@@ -1,5 +1,5 @@
 # alpine & lcs ENVs
-EMAIL=user@leadstec.com
+EMAIL=user@example.com
 ENGINE=example.com
 ENABLE_CROND=false
 ENABLE_SUPERVISORD_HTTP=false

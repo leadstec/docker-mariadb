@@ -4,11 +4,7 @@ services:
   mariadb:
     build:
       context: .
-      args:
-        - arch=
-        - version=10.4.13
-        - build=dev
-    image: leadstec.tencentcloudcr.com/leadstec/mariadb:10.4.13
+    image: leadstec/mariadb:10.4.15
     ports:
       - "50201:3306"
     volumes:

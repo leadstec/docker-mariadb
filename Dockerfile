@@ -1,21 +1,16 @@
 #
 # Author            Frank,H.L.Lai <frank@leadstec.com>
-# Docker Version    19.03
+# Docker Version    20.10
 # Website           https://www.leadstec.com
-# Copyright         (C) 2020 LEADSTEC Systems. All rights reserved.
+# Copyright         (C) 2021 LEADSTEC Systems. All rights reserved.
 #
-ARG arch=
-FROM leadstec.tencentcloudcr.com/leadstec/alpine${arch}:3.12.0
-ARG version=10.4.13
-ARG build=dev
+FROM leadstec/alpine:3.12.3
 
-LABEL version="${version}-${build}" \
-    description="MariaDB image for VCubi platform" \
+LABEL description="MariaDB image for VCubi platform" \
     maintainer="Frank,H.L.Lai <frank@leadstec.com>"
 
 # set environment variables
-ENV MARIADB_VERSION="${version}" \
-    MARIADB_LOG_DIR="${LOG_DIR}/mariadb"
+ENV MARIADB_LOG_DIR="${LOG_DIR}/mariadb"
 
 # Install packages
 RUN apk --update add mariadb mariadb-client && \
