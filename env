@@ -1,6 +1,4 @@
 # alpine & lcs ENVs
-EMAIL=user@example.com
-ENGINE=example.com
 ENABLE_CROND=false
 ENABLE_SUPERVISORD_HTTP=false
 LCS_LOG_LEVEL=production

@@ -1,4 +1,4 @@
-# MariaDB image for VCubi Platform
+# MariaDB image for VCubi platform
 
 ![Version](https://img.shields.io/badge/MariaDB-10.4.15-blue)
 ![Arch](https://img.shields.io/badge/Arch-amd64,_arm64-brightgreen)
@@ -15,10 +15,10 @@ LEADSTEC: [Official website](https://www.leadstec.com)
     docker pull leadstec/mariadb:latest
 
     # Build image
-    docker-compose build .
+    docker-compose build
 
     # Image Structure Test
-    container-structure-test test --image leadstec/mariadb:tag --config tests/mariadb.yaml
+    container-structure-test test --image leadstec/mariadb:tag --config tests/mariadb.yml
 
 
 ### LCS Schema & ENV

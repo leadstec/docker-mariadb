@@ -4,7 +4,7 @@
 # Website           https://www.leadstec.com
 # Copyright         (C) 2021 LEADSTEC Systems. All rights reserved.
 #
-FROM leadstec/alpine:3.12.3
+FROM leadstec/alpine:latest
 
 LABEL description="MariaDB image for VCubi platform" \
     maintainer="Frank,H.L.Lai <frank@leadstec.com>"
