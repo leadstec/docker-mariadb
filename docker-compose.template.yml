@@ -4,7 +4,7 @@ services:
   mariadb:
     build:
       context: .
-    image: leadstec/mariadb:10.4.15
+    image: leadstec/mariadb:10.5.8
     ports:
       - "50201:3306"
     volumes:
@@ -20,6 +20,7 @@ services:
       - deploy
     hostname: mariadb.local
     container_name: mariadb.local
+    entrypoint: ["lcsd", "run", "start", "---", "/scripts/debug.sh"]
 
 secrets:
   lcs:

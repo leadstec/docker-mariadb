@@ -36,5 +36,5 @@ jobs:
           push: true
           tags: |
             leadstec/mariadb:latest
-            leadstec/mariadb:10.4
-            leadstec/mariadb:10.4.15
+            leadstec/mariadb:10.5
+            leadstec/mariadb:10.5.8

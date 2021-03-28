@@ -1,5 +1,8 @@
 # CHANGELOG
 
+**2021/03/28**
+* Update: MariaDB 10.5.8
+
 **2021/01/11**
 * Update: MariaDB 10.4.15
 * Update: Move to Github Action for CI
