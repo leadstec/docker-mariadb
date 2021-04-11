@@ -24,7 +24,7 @@ function add_database() {
                 # check whether it is already exist
                 if [[ ! -d ${DB_DIR}/$db ]]; then
                     mysql -uroot -e "CREATE DATABASE IF NOT EXISTS \`$db\` DEFAULT CHARACTER SET \`${MARIADB_CHARACTER_SET}\` COLLATE \`${MARIADB_COLLATION}\`;"
-                    mysql -uroot -e "GRANT ALL PRIVILEGES ON \`$db\`.* TO '${MARIADB_DB_USER}' IDENTIFIED BY '{{MARIADB_DB_PASS}}';"
+                    mysql -uroot -e "GRANT ALL PRIVILEGES ON \`$db\`.* TO '${MARIADB_DB_USER}' IDENTIFIED BY '{{MARIADB_DB_PASSWD}}';"
                     clog -i "mariadb: Database \"$db\" and grant access to user \"${MARIADB_DB_USER}\" created."
                 else
                     clog -i "mariadb: Database \"$db\" already exist, skip creation."
@@ -56,7 +56,7 @@ if [[ ${SETUP_MODE} == 'new' ]]; then
     clog -i "mariadb: Grant access to root for localhost only."
 
     # remote admin
-    mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO '${MARIADB_REMOTE_ADMIN_USER}'@'%' IDENTIFIED BY '{{MARIADB_REMOTE_ADMIN_PASS}}' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+    mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO '${MARIADB_REMOTE_ADMIN_USER}'@'%' IDENTIFIED BY '{{MARIADB_REMOTE_ADMIN_PASSWD}}' WITH GRANT OPTION; FLUSH PRIVILEGES;"
     clog -i "mariadb: remote admin user with root privileges created."
 
     # shutdown mariadb to wait for supervisor

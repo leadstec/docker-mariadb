@@ -160,15 +160,15 @@
       "required": false,
       "replacements": [
         {
-          "name": "MARIADB_REMOTE_ADMIN_PASS",
+          "name": "MARIADB_REMOTE_ADMIN_PASSWD",
           "section": "mariadb",
-          "pattern": "{{MARIADB_REMOTE_ADMIN_PASS}}",
+          "pattern": "{{MARIADB_REMOTE_ADMIN_PASSWD}}",
           "path": "/scripts/mariadb.post-secret.sh"
         },
         {
-          "name": "MARIADB_DB_PASS",
+          "name": "MARIADB_DB_PASSWD",
           "section": "mariadb",
-          "pattern": "{{MARIADB_DB_PASS}}",
+          "pattern": "{{MARIADB_DB_PASSWD}}",
           "path": "/scripts/mariadb.post-secret.sh"
         }
       ]
