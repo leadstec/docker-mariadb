@@ -3,7 +3,7 @@
   "image": "mariadb",
   "version": "",
   "build": "",
-  "schema": "20181128",
+  "schema": "20210411",
   "lcs_schema": "1.6.0",
   "permissions": [
     {
@@ -20,7 +20,7 @@
   "envs": [
     {
       "name": "MARIADB_REMOTE_ADMIN_USER",
-      "default": "admin",
+      "default": "root",
       "replacements": []
     },
     {
@@ -34,21 +34,23 @@
       "replacements": []
     },
     {
-      "name": "MARIADB_DB_CHARSET",
+      "name": "MARIADB_CHARACTER_SET",
       "default": "utf8",
-      "replacements": []
-    },
-    {
-      "name": "MARIADB_DB_CHARSET_COLLATE",
-      "default": "utf8_general_ci",
-      "replacements": []
-    },
-    {
-      "name": "MARIADB_KEY_BUFFER_SIZE",
-      "default": "16M",
       "replacements": [
         {
-          "pattern": "{{MARIADB_KEY_BUFFER_SIZE}}",
+          "pattern": "{{MARIADB_CHARACTER_SET}}",
+          "path": "/etc/my.cnf.d/mariadb-server.cnf",
+          "sudo": "",
+          "type": "1"
+        }
+      ]
+    },
+    {
+      "name": "MARIADB_COLLATION",
+      "default": "utf8_general_ci",
+      "replacements": [
+        {
+          "pattern": "{{MARIADB_COLLATION}}",
           "path": "/etc/my.cnf.d/mariadb-server.cnf",
           "sudo": "",
           "type": "1"
@@ -69,7 +71,7 @@
     },
     {
       "name": "MARIADB_TABLE_OPEN_CACHE",
-      "default": "64",
+      "default": "2000",
       "replacements": [
         {
           "pattern": "{{MARIADB_TABLE_OPEN_CACHE}}",
@@ -81,7 +83,7 @@
     },
     {
       "name": "MARIADB_SORT_BUFFER_SIZE",
-      "default": "512K",
+      "default": "2M",
       "replacements": [
         {
           "pattern": "{{MARIADB_SORT_BUFFER_SIZE}}",
@@ -93,7 +95,7 @@
     },
     {
       "name": "MARIADB_NET_BUFFER_LENGTH",
-      "default": "8K",
+      "default": "16K",
       "replacements": [
         {
           "pattern": "{{MARIADB_NET_BUFFER_LENGTH}}",
@@ -104,32 +106,8 @@
       ]
     },
     {
-      "name": "MARIADB_READ_BUFFER_SIZE",
-      "default": "256K",
-      "replacements": [
-        {
-          "pattern": "{{MARIADB_READ_BUFFER_SIZE}}",
-          "path": "/etc/my.cnf.d/mariadb-server.cnf",
-          "sudo": "",
-          "type": "1"
-        }
-      ]
-    },
-    {
-      "name": "MARIADB_READ_RND_BUFFER_SIZE",
-      "default": "512K",
-      "replacements": [
-        {
-          "pattern": "{{MARIADB_READ_RND_BUFFER_SIZE}}",
-          "path": "/etc/my.cnf.d/mariadb-server.cnf",
-          "sudo": "",
-          "type": "1"
-        }
-      ]
-    },
-    {
       "name": "MARIADB_INNODB_BUFFER_POOL_SIZE",
-      "default": "64M",
+      "default": "512M",
       "replacements": [
         {
           "pattern": "{{MARIADB_INNODB_BUFFER_POOL_SIZE}}",
@@ -141,7 +119,7 @@
     },
     {
       "name": "MARIADB_INNODB_LOG_FILE_SIZE",
-      "default": "5M",
+      "default": "96M",
       "replacements": [
         {
           "pattern": "{{MARIADB_INNODB_LOG_FILE_SIZE}}",
@@ -152,11 +130,11 @@
       ]
     },
     {
-      "name": "MARIADB_INNODB_LOG_BUFFER_SIZE",
-      "default": "8M",
+      "name": "MARIADB_INNODB_FLUSH_METHOD",
+      "default": "fsync",
       "replacements": [
         {
-          "pattern": "{{MARIADB_INNODB_LOG_BUFFER_SIZE}}",
+          "pattern": "{{MARIADB_INNODB_FLUSH_METHOD}}",
           "path": "/etc/my.cnf.d/mariadb-server.cnf",
           "sudo": "",
           "type": "1"

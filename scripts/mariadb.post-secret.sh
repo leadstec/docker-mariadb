@@ -23,7 +23,7 @@ function add_database() {
             do
                 # check whether it is already exist
                 if [[ ! -d ${DB_DIR}/$db ]]; then
-                    mysql -uroot -e "CREATE DATABASE IF NOT EXISTS \`$db\` DEFAULT CHARACTER SET \`${MARIADB_DB_CHARSET}\` COLLATE \`${MARIADB_DB_CHARSET_COLLATE}\`;"
+                    mysql -uroot -e "CREATE DATABASE IF NOT EXISTS \`$db\` DEFAULT CHARACTER SET \`${MARIADB_CHARACTER_SET}\` COLLATE \`${MARIADB_COLLATION}\`;"
                     mysql -uroot -e "GRANT ALL PRIVILEGES ON \`$db\`.* TO '${MARIADB_DB_USER}' IDENTIFIED BY '{{MARIADB_DB_PASS}}';"
                     clog -i "mariadb: Database \"$db\" and grant access to user \"${MARIADB_DB_USER}\" created."
                 else
@@ -69,6 +69,6 @@ else
     #Resolve:Permission denied.When the time to restore
     mkdir -p /run/mysqld
     chown mysql:mysql  /run/mysqld
-    clog -t "MariaDB: Permission is fixed successfully."
+    clog -t "mariadb: Permission is fixed successfully."
     clog -i "mariadb: Persist storage restored."
 fi

@@ -9,29 +9,21 @@
 [mysqld]
 #skip-networking
 skip-external-locking
-key_buffer_size = {{MARIADB_KEY_BUFFER_SIZE}}
+datadir     = /data/db
+log-error   = /data/log/mariadb/mariadb.log
+character-set-server = {{MARIADB_CHARACTER_SET}}
+collation-server = {{MARIADB_COLLATION}}
+
 max_allowed_packet = {{MARIADB_MAX_ALLOWED_PACKET}}
 table_open_cache = {{MARIADB_TABLE_OPEN_CACHE}}
 sort_buffer_size = {{MARIADB_SORT_BUFFER_SIZE}}
 net_buffer_length = {{MARIADB_NET_BUFFER_LENGTH}}
-read_buffer_size = {{MARIADB_READ_BUFFER_SIZE}}
-read_rnd_buffer_size = {{MARIADB_READ_RND_BUFFER_SIZE}}
-datadir     = /data/db
-log-error   = /data/log/mariadb/mariadb.log
-collation-server = utf8_unicode_ci
-character-set-server = utf8
-init-connect='SET NAMES utf8'
 
 # InnoDB
-# innodb_data_home_dir = /data/db
 innodb_log_group_home_dir = /data/log/mariadb
-# You can set .._buffer_pool_size up to 50 - 80 %
-# of RAM but beware of setting memory usage too high
 innodb_buffer_pool_size = {{MARIADB_INNODB_BUFFER_POOL_SIZE}}
-# Set .._log_file_size to 25 % of buffer pool size
 innodb_log_file_size = {{MARIADB_INNODB_LOG_FILE_SIZE}}
-innodb_log_buffer_size = {{MARIADB_INNODB_LOG_BUFFER_SIZE}}
-innodb_flush_log_at_trx_commit = 1
+innodb_flush_method = {{MARIADB_INNODB_FLUSH_METHOD}}
 innodb_lock_wait_timeout = {{MARIADB_INNODB_LOCK_WAIT_TIMEOUT}}
 
 [mysqldump]
@@ -70,5 +62,4 @@ no-auto-rehash
 # This group is only read by MariaDB-10.3 servers.
 # If you use the same .cnf file for MariaDB of different versions,
 # use this group for options that older servers don't understand
-[mariadb-10.3]
-
+[mariadb-10.5]
